@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="stylesheet" href="../Public/Css/public.css" />
+<head>
+</head>
+<body>
+	<table class="table">
+		<tr>
+			<th colspan="4">角色列表</th>
+		</tr>
+		<tr>
+			<td>角色名称</td>
+			<td>角色描述</td>
+			<td>是否锁定</td>
+			<td>操作</td>
+		</tr>
+		<foreach name="list" item="user">
+		<tr>
+			<td>{$user.name}</td>
+			<td>{$user.remark}</td>
+			<td><if condition="$user['status'] eq 1"> 开启 <else /> 关闭 </if></td>
+			<td><a href="{:U( 'access', array('rid'=>$user['id']) )}"> 权限配置 </a></td>
+		</tr>
+		</foreach>
+		</form>
+	</table>
+</body>
+</html>

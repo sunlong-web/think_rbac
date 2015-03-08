@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="stylesheet" href="../Public/Css/public.css" />
+<script type="text/javascript" src="../Public/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".add-role").click(function(){
+			var obj = $(this).parents('tr').clone();
+			obj.find('.add-role').remove();
+			$('#last').before(obj);
+		});
+	});
+</script>
+<style type="text/css">
+	.add-role{
+		display: inline-block;
+		width: 100px;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+</style>
+<head>
+</head>
+<body>
+	<table class="table">
+		<tr>
+			<th colspan="2">添加用户</th>
+		</tr>
+		<form name="form1" method="post" action="{:U( 'addUser' )}">
+		<tr>
+			<td align="right">用户账号：</td>
+			<td><input name="username" type="text"></td>
+		</tr>
+		<tr>
+			<td align="right">用户密码：</td>
+			<td><input name="password" type="password"></td>
+		</tr>
+		<tr>
+			<td align="right">用户邮箱：</td>
+			<td>
+				<input type="email" name="status">
+			</td>
+		</tr>
+		<tr id="last">
+			<td align="right">所属角色：</td>
+			<td>
+			<select name="role_id[]">
+				<option>请选择角色</option>
+				<foreach name="role" item="v">
+					<option value="{$v.id}">{$v.name}( {$v.remark} )</option>
+				</foreach>
+			</select>
+			<span class="add-role">添加一个角色</span>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="保存添加"></td>
+		</tr>
+		</form>
+	</table>
+</body>
+</html>
